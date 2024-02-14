@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 class LikesController extends Controller
 {
 
-
-
-    //funcion para almacenar los likes
-    //se recibe la fecha del clima,la ip del usuario y la fecha en la que se dio like
-    //si la fecha no existe en la tabla de fechas se crea
-    //se registra el like en la tabla de likes
+    /**
+     * Almacena un nuevo like en la base de datos.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         //validamos los datos
@@ -45,7 +45,14 @@ class LikesController extends Controller
         ]);
     }
 
-    //funcion para obtener los likes de una fecha
+
+    /**
+     * Muestra la cantidad de likes para una fecha específica.
+     *
+     * @param string $date La fecha para la cual se desea obtener la cantidad de likes.
+     * @param Request $request La instancia de la clase Request que contiene los datos de la solicitud.
+     * @return \Illuminate\Http\JsonResponse La respuesta JSON que contiene la cantidad de likes.
+     */
     public function show($date, Request $request)
     {
         //buscamos la fecha en la tabla de fechas
